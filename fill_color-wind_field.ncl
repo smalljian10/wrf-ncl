@@ -2,7 +2,7 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/wrf/WRFUserARW.ncl"
 begin
-f1 = addfile("./wrfout_d02_2019-07-27_06:00:00.nc","r")
+f1 = addfile("wrfout path","r")
 times = wrf_user_list_times(f1)
 rh = wrf_user_getvar(f1,"rh",-1)
 u10 = wrf_user_getvar(f1,"U10",-1)
@@ -57,10 +57,10 @@ res@vcRefAnnoOrthogonalPosF  = -1.0 ;调节图例的上下位置，正为与res@
 res@vcRefAnnoParallelPosF    = 1.0 ;调节图例的左右位置，正为向左
 res@vcGlyphStyle           ="CurlyVector" ;控制矢量箭头的形式
 res@vcMinDistanceF         = 0.03 ;风场箭头疏密
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 res@tiMainString           = "surface RH and wind at 10m" ;标题名称
 res@tiMainFontHeightF      = .018 ;标题大小
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 plot = gsn_csm_vector_scalar_map(wks,u10(0,:,:),v10(0,:,:),rh(0,0,:,:),res)
 
